@@ -13,8 +13,9 @@ export const store = async (req, res) => {
     res.status(201).json(productSaved);
 }
 
-export const show = (req, res) => {
-    
+export const show = async (req, res) => {
+    const product = await Product.findById(req.params.productId);
+    res.status(200).json(product);
 }
 
 export const update = (req, res) => {
