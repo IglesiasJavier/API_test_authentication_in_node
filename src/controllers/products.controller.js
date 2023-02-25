@@ -1,8 +1,9 @@
 import Product from "../models/Product"
 
 
-export const index = (req, res) => { 
-    
+export const index = async (req, res) => { 
+    const products = await Product.find();
+    res.json(products);
 }
 
 export const store = async (req, res) => {
