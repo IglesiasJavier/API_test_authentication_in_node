@@ -23,6 +23,8 @@ export const update = async (req, res) => {
     res.status(200).json(updatedProduct);
 }
 
-export const del = (req, res) => {
-
+export const del = async (req, res) => {
+    const {productId} = req.params;
+    const deletedProduct = await Product.findByIdAndDelete(productId);
+    res.status(200).json(deletedProduct);
 }
