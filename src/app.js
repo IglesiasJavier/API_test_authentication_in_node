@@ -1,14 +1,15 @@
 import express from 'express';
-import pkg from '../package.json'
+import pkg from '../package.json';
 import morgan from 'morgan';
 import ProductRoutes from './routes/products.routes';
-import AuthRoutes from './routes/auth.routes'
-
+import AuthRoutes from './routes/auth.routes';
+import {createRoles} from './libs/initalSetup';
 const app = express();
-
+createRoles();
 app.set('pkg',pkg);
 app.use(express.json())
 app.use(morgan('dev'));
+
 
 app.get('/', (req, res) => {
     res.json({
